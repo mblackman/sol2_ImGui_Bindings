@@ -1,0 +1,21 @@
+{
+  "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg-tool/main/docs/vcpkg.schema.json",
+  "name": "your-project-name",
+  "version-string": "1.0.0",
+  "dependencies": [
+    {
+      "name": "imgui",
+      "version>=": "1.91.8"
+    },
+    {
+      "name": "sol2",
+      "version>=": "3.5.0"
+    }
+  ],
+  "overrides": [
+    {
+      "name": "imgui",
+      "version": "1.91.8"
+    }
+  ]
+}
