@@ -46,7 +46,7 @@ namespace sol_ImGui {
     }
 
     bool BeginCombo(const std::string &label, const std::string &previewValue, int flags) {
-        return ImGui::BeginCombo(label.c_str(), previewValue.c_str(), flags);
+      return ImGui::BeginCombo(label.c_str(), previewValue.c_str(), flags);
     }
 
     void EndCombo() { ImGui::EndCombo(); }
@@ -130,8 +130,7 @@ namespace sol_ImGui {
         float color_arr[4] = {float(r), float(g), float(b), float(a)}; // Renamed
         bool used = ImGui::ColorEdit4(label.c_str(), color_arr, flags);
 
-        sol::as_table_t rgba = sol::as_table(std::vector{
-            color_arr[0], color_arr[1], color_arr[2], color_arr[3]
+        sol::as_table_t rgba = sol::as_table(std::vector{color_arr[0], color_arr[1], color_arr[2], color_arr[3]
         });
         return std::make_tuple(rgba, used);
     }
@@ -171,8 +170,7 @@ namespace sol_ImGui {
         // Note: ref_col is not easily passed from Lua. Keeping it NULL.
         bool used = ImGui::ColorPicker4(label.c_str(), color_arr, flags, ref_col);
 
-        sol::as_table_t rgba = sol::as_table(std::vector{
-            color_arr[0], color_arr[1], color_arr[2], color_arr[3]
+        sol::as_table_t rgba = sol::as_table(std::vector{color_arr[0], color_arr[1], color_arr[2], color_arr[3]
         });
         return std::make_tuple(rgba, used);
     }
@@ -198,8 +196,7 @@ namespace sol_ImGui {
     bool TreeNodeEx(const std::string &label) { return ImGui::TreeNodeEx(label.c_str()); }
 
     bool TreeNodeEx(const std::string &label, int flags) {
-        return ImGui::TreeNodeEx(label.c_str(), flags);
-    }
+        return ImGui::TreeNodeEx(label.c_str(), flags); }
 
     bool TreeNodeEx(const std::string &str_id, int flags, const std::string &fmt_or_label) {
         return ImGui::TreeNodeEx(str_id.c_str(), flags, "%s", fmt_or_label.c_str());
@@ -214,13 +211,11 @@ namespace sol_ImGui {
     bool CollapsingHeader(const std::string &label) { return ImGui::CollapsingHeader(label.c_str()); }
 
     bool CollapsingHeader(const std::string &label, int flags) {
-        return ImGui::CollapsingHeader(label.c_str(), flags);
-    }
+        return ImGui::CollapsingHeader(label.c_str(), flags); }
 
     std::tuple<bool, bool> CollapsingHeader(const std::string &label, bool open, int flags) {
         bool p_open_value = open;
-        bool notCollapsed = ImGui::CollapsingHeader(label.c_str(), &p_open_value,
-                                                    flags);
+        bool notCollapsed = ImGui::CollapsingHeader(label.c_str(), &p_open_value, flags);
         return std::make_tuple(p_open_value, notCollapsed);
     }
 

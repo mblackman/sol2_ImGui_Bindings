@@ -13,13 +13,10 @@ namespace sol_ImGui {
 
     bool BeginPopup(const std::string &str_id) { return ImGui::BeginPopup(str_id.c_str()); }
 
-    bool BeginPopup(const std::string &str_id, int flags) {
-        return ImGui::BeginPopup(str_id.c_str(), flags);
-    }
+    bool BeginPopup(const std::string &str_id, int flags) { return ImGui::BeginPopup(str_id.c_str(), flags); }
 
     bool BeginPopupModal(const std::string &name) {
-        return ImGui::BeginPopupModal(name.c_str(), nullptr, 0);
-    }
+        return ImGui::BeginPopupModal(name.c_str(), nullptr, 0); }
 
     bool BeginPopupModal(const std::string &name, int flags) {
         // Overload with flags, no p_open
@@ -41,8 +38,7 @@ namespace sol_ImGui {
     void OpenPopup(const std::string &str_id) { ImGui::OpenPopup(str_id.c_str()); }
 
     void OpenPopup(const std::string &str_id, int popup_flags) {
-        ImGui::OpenPopup(str_id.c_str(), popup_flags);
-    }
+        ImGui::OpenPopup(str_id.c_str(), popup_flags); }
 
     void OpenPopupOnItemClick(const std::string &str_id, int popup_flags) {
         ImGui::OpenPopupOnItemClick(str_id.empty() ? nullptr : str_id.c_str(), popup_flags);
@@ -51,8 +47,7 @@ namespace sol_ImGui {
     void OpenPopupOnItemClick() { ImGui::OpenPopupOnItemClick(nullptr, 1); }
 
     bool BeginPopupContextItem() {
-        return ImGui::BeginPopupContextItem(nullptr, ImGuiPopupFlags_MouseButtonRight);
-    }
+        return ImGui::BeginPopupContextItem(nullptr, ImGuiPopupFlags_MouseButtonRight); }
 
     bool BeginPopupContextItem(const std::string &str_id) {
         return ImGui::BeginPopupContextItem(str_id.c_str(), ImGuiPopupFlags_MouseButtonRight);
@@ -63,8 +58,7 @@ namespace sol_ImGui {
     }
 
     bool BeginPopupContextWindow() {
-        return ImGui::BeginPopupContextWindow(nullptr, ImGuiPopupFlags_MouseButtonRight);
-    }
+        return ImGui::BeginPopupContextWindow(nullptr, ImGuiPopupFlags_MouseButtonRight); }
 
     bool BeginPopupContextWindow(const std::string &str_id) {
         return ImGui::BeginPopupContextWindow(str_id.c_str(), ImGuiPopupFlags_MouseButtonRight);
@@ -75,8 +69,7 @@ namespace sol_ImGui {
     }
 
     bool BeginPopupContextVoid() {
-        return ImGui::BeginPopupContextVoid(nullptr, ImGuiPopupFlags_MouseButtonRight);
-    }
+        return ImGui::BeginPopupContextVoid(nullptr, ImGuiPopupFlags_MouseButtonRight); }
 
     bool BeginPopupContextVoid(const std::string &str_id) {
         return ImGui::BeginPopupContextVoid(str_id.c_str(), ImGuiPopupFlags_MouseButtonRight);

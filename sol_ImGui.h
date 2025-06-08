@@ -415,13 +415,11 @@ namespace sol_ImGui {
         }
         bool used = false;
         if (N == 2)
-            used = ImGui::DragFloat2(label.c_str(), value, v_speed, v_min, v_max, format,
-                                     flags);
+            used = ImGui::DragFloat2(label.c_str(), value, v_speed, v_min, v_max, format, flags);
         else if (N == 3)
-            used = ImGui::DragFloat3(label.c_str(), value, v_speed, v_min, v_max, format,
-                                     flags);
+            used = ImGui::DragFloat3(label.c_str(), value, v_speed, v_min, v_max, format, flags);
         else if (N == 4)
-            used = ImGui::DragFloat4(label.c_str(), value, v_speed, v_min, v_max, format,
+          used = ImGui::DragFloat4(label.c_str(), value, v_speed, v_min, v_max, format,
                                      flags);
 
         std::vector<float> result_vec;
@@ -530,10 +528,10 @@ namespace sol_ImGui {
             used = ImGui::DragInt2(label.c_str(), value, v_speed, v_min, v_max, format,
                                    flags);
         else if (N == 3)
-            used = ImGui::DragInt3(label.c_str(), value, v_speed, v_min, v_max, format,
+          used = ImGui::DragInt3(label.c_str(), value, v_speed, v_min, v_max, format,
                                    flags);
         else if (N == 4)
-            used = ImGui::DragInt4(label.c_str(), value, v_speed, v_min, v_max, format,
+          used = ImGui::DragInt4(label.c_str(), value, v_speed, v_min, v_max, format,
                                    flags);
 
         std::vector<int> result_vec;
@@ -635,10 +633,10 @@ namespace sol_ImGui {
             used = ImGui::SliderFloat2(label.c_str(), value, v_min, v_max, format,
                                        flags);
         else if (N == 3)
-            used = ImGui::SliderFloat3(label.c_str(), value, v_min, v_max, format,
+          used = ImGui::SliderFloat3(label.c_str(), value, v_min, v_max, format,
                                        flags);
         else if (N == 4)
-            used = ImGui::SliderFloat4(label.c_str(), value, v_min, v_max, format,
+          used = ImGui::SliderFloat4(label.c_str(), value, v_min, v_max, format,
                                        flags);
 
         std::vector<float> result_vec;
@@ -863,11 +861,10 @@ namespace sol_ImGui {
         bool used = false;
         if (N == 2) used = ImGui::InputFloat2(label.c_str(), value, format, flags);
         else if (N == 3)
-            used = ImGui::InputFloat3(label.c_str(), value, format,
+          used = ImGui::InputFloat3(label.c_str(), value, format,
                                       flags);
         else if (N == 4)
-            used = ImGui::InputFloat4(label.c_str(), value, format,
-                                      flags);
+            used = ImGui::InputFloat4(label.c_str(), value, format, flags);
 
         std::vector<float> result_vec;
         for (int i = 0; i < N; ++i) result_vec.push_back(value[i]);
@@ -929,7 +926,8 @@ namespace sol_ImGui {
         bool used = false;
         if (N == 2) used = ImGui::InputInt2(label.c_str(), value, flags);
         else if (N == 3) used = ImGui::InputInt3(label.c_str(), value, flags);
-        else if (N == 4) used = ImGui::InputInt4(label.c_str(), value, flags);
+        else if (N == 4)
+          used = ImGui::InputInt4(label.c_str(), value, flags);
 
         std::vector<int> result_vec;
         for (int i = 0; i < N; ++i) result_vec.push_back(value[i]);
