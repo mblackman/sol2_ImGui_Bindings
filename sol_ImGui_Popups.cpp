@@ -15,8 +15,7 @@ namespace sol_ImGui {
 
     bool BeginPopup(const std::string &str_id, int flags) { return ImGui::BeginPopup(str_id.c_str(), flags); }
 
-    bool BeginPopupModal(const std::string &name) {
-        return ImGui::BeginPopupModal(name.c_str(), nullptr, 0); }
+    bool BeginPopupModal(const std::string &name) { return ImGui::BeginPopupModal(name.c_str(), nullptr, 0); }
 
     bool BeginPopupModal(const std::string &name, int flags) {
         // Overload with flags, no p_open
@@ -37,8 +36,7 @@ namespace sol_ImGui {
 
     void OpenPopup(const std::string &str_id) { ImGui::OpenPopup(str_id.c_str()); }
 
-    void OpenPopup(const std::string &str_id, int popup_flags) {
-        ImGui::OpenPopup(str_id.c_str(), popup_flags); }
+    void OpenPopup(const std::string &str_id, int popup_flags) { ImGui::OpenPopup(str_id.c_str(), popup_flags); }
 
     void OpenPopupOnItemClick(const std::string &str_id, int popup_flags) {
         ImGui::OpenPopupOnItemClick(str_id.empty() ? nullptr : str_id.c_str(), popup_flags);
