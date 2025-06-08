@@ -12,7 +12,7 @@ namespace sol_ImGui {
     std::tuple<bool, bool> Begin(const std::string &name, bool open, int flags) {
         bool p_open_value = open;
         bool should_draw = ImGui::Begin(name.c_str(), open ? &p_open_value : NULL,
-                                        static_cast<ImGuiWindowFlags_>(flags));
+                                        flags);
         return std::make_tuple(p_open_value, should_draw);
     }
 
@@ -36,13 +36,13 @@ namespace sol_ImGui {
     }
 
     bool BeginChild(const std::string &name, float sizeX, float sizeY, int child_flags, int window_flags) {
-        return ImGui::BeginChild(name.c_str(), {sizeX, sizeY}, static_cast<ImGuiChildFlags>(child_flags),
-                                 static_cast<ImGuiWindowFlags>(window_flags));
+        return ImGui::BeginChild(name.c_str(), {sizeX, sizeY}, child_flags,
+                                 window_flags);
     }
 
     bool BeginChildEx(const std::string &name, float sizeX, float sizeY, bool border, int window_flags) {
         return ImGui::BeginChild(name.c_str(), {sizeX, sizeY}, border ? ImGuiChildFlags_Borders : ImGuiChildFlags_None,
-                                 static_cast<ImGuiWindowFlags>(window_flags));
+                                 window_flags);
     }
 
     void EndChild() { ImGui::EndChild(); }
@@ -53,11 +53,11 @@ namespace sol_ImGui {
 
     bool IsWindowFocused() { return ImGui::IsWindowFocused(); }
 
-    bool IsWindowFocused(int flags) { return ImGui::IsWindowFocused(static_cast<ImGuiFocusedFlags>(flags)); }
+    bool IsWindowFocused(int flags) { return ImGui::IsWindowFocused(flags); }
 
     bool IsWindowHovered() { return ImGui::IsWindowHovered(); }
 
-    bool IsWindowHovered(int flags) { return ImGui::IsWindowHovered(static_cast<ImGuiHoveredFlags>(flags)); }
+    bool IsWindowHovered(int flags) { return ImGui::IsWindowHovered(flags); }
 
     ImDrawList *GetWindowDrawList() {
         return nullptr; /* TODO: GetWindowDrawList() ==> UNSUPPORTED (exposing ImDrawList is complex) */
@@ -84,17 +84,17 @@ namespace sol_ImGui {
     void SetNextWindowPos(float posX, float posY) { ImGui::SetNextWindowPos({posX, posY}); }
 
     void SetNextWindowPos(float posX, float posY, int cond) {
-        ImGui::SetNextWindowPos({posX, posY}, static_cast<ImGuiCond>(cond));
+        ImGui::SetNextWindowPos({posX, posY}, cond);
     }
 
     void SetNextWindowPos(float posX, float posY, int cond, float pivotX, float pivotY) {
-        ImGui::SetNextWindowPos({posX, posY}, static_cast<ImGuiCond>(cond), {pivotX, pivotY});
+        ImGui::SetNextWindowPos({posX, posY}, cond, {pivotX, pivotY});
     }
 
     void SetNextWindowSize(float sizeX, float sizeY) { ImGui::SetNextWindowSize({sizeX, sizeY}); }
 
     void SetNextWindowSize(float sizeX, float sizeY, int cond) {
-        ImGui::SetNextWindowSize({sizeX, sizeY}, static_cast<ImGuiCond>(cond));
+        ImGui::SetNextWindowSize({sizeX, sizeY}, cond);
     }
 
     void SetNextWindowSizeConstraints(float minX, float minY, float maxX, float maxY) {
@@ -106,7 +106,7 @@ namespace sol_ImGui {
     void SetNextWindowCollapsed(bool collapsed) { ImGui::SetNextWindowCollapsed(collapsed); }
 
     void SetNextWindowCollapsed(bool collapsed, int cond) {
-        ImGui::SetNextWindowCollapsed(collapsed, static_cast<ImGuiCond>(cond));
+        ImGui::SetNextWindowCollapsed(collapsed, cond);
     }
 
     void SetNextWindowFocus() { ImGui::SetNextWindowFocus(); }
@@ -116,19 +116,19 @@ namespace sol_ImGui {
     void SetWindowPos(float posX, float posY) { ImGui::SetWindowPos({posX, posY}); }
 
     void SetWindowPos(float posX, float posY, int cond) {
-        ImGui::SetWindowPos({posX, posY}, static_cast<ImGuiCond>(cond));
+        ImGui::SetWindowPos({posX, posY}, cond);
     }
 
     void SetWindowSize(float sizeX, float sizeY) { ImGui::SetWindowSize({sizeX, sizeY}); }
 
     void SetWindowSize(float sizeX, float sizeY, int cond) {
-        ImGui::SetWindowSize({sizeX, sizeY}, static_cast<ImGuiCond>(cond));
+        ImGui::SetWindowSize({sizeX, sizeY}, cond);
     }
 
     void SetWindowCollapsed(bool collapsed) { ImGui::SetWindowCollapsed(collapsed); }
 
     void SetWindowCollapsed(bool collapsed, int cond) {
-        ImGui::SetWindowCollapsed(collapsed, static_cast<ImGuiCond>(cond));
+        ImGui::SetWindowCollapsed(collapsed, cond);
     }
 
     void SetWindowFocus() { ImGui::SetWindowFocus(); }
@@ -140,7 +140,7 @@ namespace sol_ImGui {
     }
 
     void SetWindowPos(const std::string &name, float posX, float posY, int cond) {
-        ImGui::SetWindowPos(name.c_str(), {posX, posY}, static_cast<ImGuiCond>(cond));
+        ImGui::SetWindowPos(name.c_str(), {posX, posY}, cond);
     }
 
     void SetWindowSize(const std::string &name, float sizeX, float sizeY) {
@@ -148,7 +148,7 @@ namespace sol_ImGui {
     }
 
     void SetWindowSize(const std::string &name, float sizeX, float sizeY, int cond) {
-        ImGui::SetWindowSize(name.c_str(), {sizeX, sizeY}, static_cast<ImGuiCond>(cond));
+        ImGui::SetWindowSize(name.c_str(), {sizeX, sizeY}, cond);
     }
 
     void SetWindowCollapsed(const std::string &name, bool collapsed) {
@@ -156,7 +156,7 @@ namespace sol_ImGui {
     }
 
     void SetWindowCollapsed(const std::string &name, bool collapsed, int cond) {
-        ImGui::SetWindowCollapsed(name.c_str(), collapsed, static_cast<ImGuiCond>(cond));
+        ImGui::SetWindowCollapsed(name.c_str(), collapsed, cond);
     }
 
     void SetWindowFocus(const std::string &name) { ImGui::SetWindowFocus(name.c_str()); }
@@ -166,7 +166,7 @@ namespace sol_ImGui {
     }
 
     bool BeginChildFrame(unsigned int id, float sizeX, float sizeY, int flags) {
-        return ImGui::BeginChild(id, {sizeX, sizeY}, ImGuiChildFlags_FrameStyle, static_cast<ImGuiWindowFlags>(flags));
+        return ImGui::BeginChild(id, {sizeX, sizeY}, ImGuiChildFlags_FrameStyle, flags);
     }
 
     void EndChildFrame() { ImGui::EndChild(); }
@@ -219,7 +219,7 @@ namespace sol_ImGui {
                                     sol::resolve<bool(const std::string &, float, float, int, int)>(BeginChild)
                                     // new child_flags, window_flags version
                                 ));
-        imGuiTable.set_function("BeginChildEx", sol_ImGui::BeginChildEx); // Specific for bool border, int window_flags
+        imGuiTable.set_function("BeginChildEx", BeginChildEx); // Specific for bool border, int window_flags
         imGuiTable.set_function("EndChild", EndChild);
     }
 

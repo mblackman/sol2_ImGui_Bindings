@@ -1,7 +1,6 @@
 {
-  "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg-tool/main/docs/vcpkg.schema.json",
-  "name": "your-project-name",
-  "version-string": "1.0.0",
+  "name": "sol2_ImGui_Bindings",
+  "version-string": "1.91.8",
   "dependencies": [
     {
       "name": "imgui",

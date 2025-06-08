@@ -28,7 +28,7 @@ namespace sol_ImGui {
     int GetFrameCount() { return ImGui::GetFrameCount(); }
 
     std::string GetStyleColorName(int idx) {
-        return std::string(ImGui::GetStyleColorName(static_cast<ImGuiCol>(idx)));
+        return std::string(ImGui::GetStyleColorName(idx));
     }
 
     std::tuple<float, float> CalcTextSize(const std::string &text, bool hide_text_after_double_hash, float wrap_width) {

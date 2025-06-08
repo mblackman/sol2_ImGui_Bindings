@@ -2,7 +2,7 @@
 
 Welcome to the sol2 ImGui bindings.
 I spent my time making these over the last few days.
-I hope you think they are useful as there's no others to my knowledge.
+I hope you think they are useful as there are no others to my knowledge.
 
 Enjoy! 
 
@@ -12,8 +12,9 @@ https://github.com/MSeys/sol2_ImGui_Bindings/network/members
 
 # Notes
 - This uses the latest sol2 version (as of July 2020), the repo is located at https://github.com/ThePhD/sol2/.
-- These bindings are based on one of the latest version of ImGui Docking Branch. Comment what you don't need or breaks.
-- I've hid the U32 related function with a define (SOL_IMGUI_USE_COLOR_U32), if you wish to use these, define that!
+- These bindings are based on one of the latest versions of ImGui Docking Branch. Comment what you don't need or breaks.
+- I've hidden the U32 related function with a definition (SOL_IMGUI_USE_COLOR_U32), if you wish to use these, define
+  that!
 - There's also another define hidden (CUSTOM_IMGUI) which is for my own adapted imgui version with a few more enum values, ignore if you wish.
 
 # How to Use

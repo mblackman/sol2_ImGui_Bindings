@@ -2,7 +2,6 @@
 #include "imgui.h"
 #include <string>
 #include <vector> // For InputText buffer
-#include <algorithm> // For std::min in ListBoxHeader and strncpy_s
 #if !defined(_MSC_VER)
 #include <cstring> // For memcpy, memset, strlen
 #endif
@@ -315,7 +314,7 @@ namespace sol_ImGui {
     void TextDisabled(const std::string &text);
 
     // Note: ImGui::TextWrapped is variadic. This binding supports only a single string.
-    void TextWrapped(const std::string text);
+    void TextWrapped(std::string text);
 
     // Note: ImGui::LabelText is variadic. This binding supports only a single string.
     void LabelText(const std::string &label, const std::string &text);
@@ -417,13 +416,13 @@ namespace sol_ImGui {
         bool used = false;
         if (N == 2)
             used = ImGui::DragFloat2(label.c_str(), value, v_speed, v_min, v_max, format,
-                                     static_cast<ImGuiSliderFlags>(flags));
+                                     flags);
         else if (N == 3)
             used = ImGui::DragFloat3(label.c_str(), value, v_speed, v_min, v_max, format,
-                                     static_cast<ImGuiSliderFlags>(flags));
+                                     flags);
         else if (N == 4)
             used = ImGui::DragFloat4(label.c_str(), value, v_speed, v_min, v_max, format,
-                                     static_cast<ImGuiSliderFlags>(flags));
+                                     flags);
 
         std::vector<float> result_vec;
         for (int i = 0; i < N; ++i) result_vec.push_back(value[i]);
@@ -529,13 +528,13 @@ namespace sol_ImGui {
         bool used = false;
         if (N == 2)
             used = ImGui::DragInt2(label.c_str(), value, v_speed, v_min, v_max, format,
-                                   static_cast<ImGuiSliderFlags>(flags));
+                                   flags);
         else if (N == 3)
             used = ImGui::DragInt3(label.c_str(), value, v_speed, v_min, v_max, format,
-                                   static_cast<ImGuiSliderFlags>(flags));
+                                   flags);
         else if (N == 4)
             used = ImGui::DragInt4(label.c_str(), value, v_speed, v_min, v_max, format,
-                                   static_cast<ImGuiSliderFlags>(flags));
+                                   flags);
 
         std::vector<int> result_vec;
         for (int i = 0; i < N; ++i) result_vec.push_back(value[i]);
@@ -634,13 +633,13 @@ namespace sol_ImGui {
         bool used = false;
         if (N == 2)
             used = ImGui::SliderFloat2(label.c_str(), value, v_min, v_max, format,
-                                       static_cast<ImGuiSliderFlags>(flags));
+                                       flags);
         else if (N == 3)
             used = ImGui::SliderFloat3(label.c_str(), value, v_min, v_max, format,
-                                       static_cast<ImGuiSliderFlags>(flags));
+                                       flags);
         else if (N == 4)
             used = ImGui::SliderFloat4(label.c_str(), value, v_min, v_max, format,
-                                       static_cast<ImGuiSliderFlags>(flags));
+                                       flags);
 
         std::vector<float> result_vec;
         for (int i = 0; i < N; ++i) result_vec.push_back(value[i]);
@@ -726,13 +725,13 @@ namespace sol_ImGui {
         bool used = false;
         if (N == 2)
             used = ImGui::SliderInt2(label.c_str(), value, v_min, v_max, format,
-                                     static_cast<ImGuiSliderFlags>(flags));
+                                     flags);
         else if (N == 3)
             used = ImGui::SliderInt3(label.c_str(), value, v_min, v_max, format,
-                                     static_cast<ImGuiSliderFlags>(flags));
+                                     flags);
         else if (N == 4)
             used = ImGui::SliderInt4(label.c_str(), value, v_min, v_max, format,
-                                     static_cast<ImGuiSliderFlags>(flags));
+                                     flags);
 
         std::vector<int> result_vec;
         for (int i = 0; i < N; ++i) result_vec.push_back(value[i]);
@@ -862,13 +861,13 @@ namespace sol_ImGui {
             value[i] = v_table[i + 1].get<std::optional<lua_Number> >().value_or(static_cast<lua_Number>(0));
         }
         bool used = false;
-        if (N == 2) used = ImGui::InputFloat2(label.c_str(), value, format, static_cast<ImGuiInputTextFlags>(flags));
+        if (N == 2) used = ImGui::InputFloat2(label.c_str(), value, format, flags);
         else if (N == 3)
             used = ImGui::InputFloat3(label.c_str(), value, format,
-                                      static_cast<ImGuiInputTextFlags>(flags));
+                                      flags);
         else if (N == 4)
             used = ImGui::InputFloat4(label.c_str(), value, format,
-                                      static_cast<ImGuiInputTextFlags>(flags));
+                                      flags);
 
         std::vector<float> result_vec;
         for (int i = 0; i < N; ++i) result_vec.push_back(value[i]);
@@ -928,9 +927,9 @@ namespace sol_ImGui {
                 static_cast<lua_Number>(0)));
         }
         bool used = false;
-        if (N == 2) used = ImGui::InputInt2(label.c_str(), value, static_cast<ImGuiInputTextFlags>(flags));
-        else if (N == 3) used = ImGui::InputInt3(label.c_str(), value, static_cast<ImGuiInputTextFlags>(flags));
-        else if (N == 4) used = ImGui::InputInt4(label.c_str(), value, static_cast<ImGuiInputTextFlags>(flags));
+        if (N == 2) used = ImGui::InputInt2(label.c_str(), value, flags);
+        else if (N == 3) used = ImGui::InputInt3(label.c_str(), value, flags);
+        else if (N == 4) used = ImGui::InputInt4(label.c_str(), value, flags);
 
         std::vector<int> result_vec;
         for (int i = 0; i < N; ++i) result_vec.push_back(value[i]);

@@ -29,7 +29,7 @@ namespace sol_ImGui {
                                       const char *format, int flags) {
         float current_v = v; // Pass by reference
         bool used = ImGui::DragFloat(label.c_str(), &current_v, v_speed, v_min, v_max, format,
-                                     static_cast<ImGuiSliderFlags>(flags));
+                                     flags);
         return std::make_tuple(current_v, used);
     }
 
@@ -46,7 +46,7 @@ namespace sol_ImGui {
     }
 
     bool InvisibleButton(const std::string &str_id, float sizeX, float sizeY, int flags) {
-        return ImGui::InvisibleButton(str_id.c_str(), {sizeX, sizeY}, static_cast<ImGuiButtonFlags>(flags));
+        return ImGui::InvisibleButton(str_id.c_str(), {sizeX, sizeY}, flags);
     }
 
     bool ArrowButton(const std::string &stringID, int dir) {
@@ -107,7 +107,7 @@ namespace sol_ImGui {
                                       const std::string &format, int flags) {
         float current_v = v; // Pass by reference
         bool used = ImGui::DragFloat(label.c_str(), &current_v, v_speed, v_min, v_max, format.c_str(),
-                                     static_cast<ImGuiSliderFlags>(flags));
+                                     flags);
         return std::make_tuple(current_v, used);
     }
 
@@ -212,7 +212,7 @@ namespace sol_ImGui {
                                   const char *format, int flags) {
         int current_v = v; // Pass by reference
         bool used = ImGui::DragInt(label.c_str(), &current_v, v_speed, v_min, v_max, format,
-                                   static_cast<ImGuiSliderFlags>(flags));
+                                   flags);
         return std::make_tuple(current_v, used);
     }
 
@@ -241,7 +241,7 @@ namespace sol_ImGui {
                                   const std::string &format, int flags) {
         int current_v = v; // Pass by reference
         bool used = ImGui::DragInt(label.c_str(), &current_v, v_speed, v_min, v_max, format.c_str(),
-                                   static_cast<ImGuiSliderFlags>(flags));
+                                   flags);
         return std::make_tuple(current_v, used);
     }
 
@@ -354,7 +354,7 @@ namespace sol_ImGui {
                                         int flags) {
         float current_v = v; // Pass by reference
         bool used = ImGui::SliderFloat(label.c_str(), &current_v, v_min, v_max, format,
-                                       static_cast<ImGuiSliderFlags>(flags));
+                                       flags);
         return std::make_tuple(current_v, used);
     }
 
@@ -371,7 +371,7 @@ namespace sol_ImGui {
                                         const std::string &format, int flags) {
         float current_v = v; // Pass by reference
         bool used = ImGui::SliderFloat(label.c_str(), &current_v, v_min, v_max, format.c_str(),
-                                       static_cast<ImGuiSliderFlags>(flags));
+                                       flags);
         return std::make_tuple(current_v, used);
     }
 
@@ -430,7 +430,7 @@ namespace sol_ImGui {
                                         const char *format, int flags) {
         float current_v_rad = v_rad; // Pass by reference
         bool used = ImGui::SliderAngle(label.c_str(), &current_v_rad, v_degrees_min, v_degrees_max, format,
-                                       static_cast<ImGuiSliderFlags>(flags));
+                                       flags);
         return std::make_tuple(current_v_rad, used);
     }
 
@@ -456,7 +456,7 @@ namespace sol_ImGui {
                                         const std::string &format, int flags) {
         float current_v_rad = v_rad; // Pass by reference
         bool used = ImGui::SliderAngle(label.c_str(), &current_v_rad, v_degrees_min, v_degrees_max, format.c_str(),
-                                       static_cast<ImGuiSliderFlags>(flags));
+                                       flags);
         return std::make_tuple(current_v_rad, used);
     }
 
@@ -464,7 +464,7 @@ namespace sol_ImGui {
                                     int flags) {
         int current_v = v; // Pass by reference
         bool used = ImGui::SliderInt(label.c_str(), &current_v, v_min, v_max, format,
-                                     static_cast<ImGuiSliderFlags>(flags));
+                                     flags);
         return std::make_tuple(current_v, used);
     }
 
@@ -480,7 +480,7 @@ namespace sol_ImGui {
                                     int flags) {
         int current_v = v; // Pass by reference
         bool used = ImGui::SliderInt(label.c_str(), &current_v, v_min, v_max, format.c_str(),
-                                     static_cast<ImGuiSliderFlags>(flags));
+                                     flags);
         return std::make_tuple(current_v, used);
     }
 
@@ -544,7 +544,7 @@ namespace sol_ImGui {
                                          float v_max, const char *format, int flags) {
         float current_v = v; // Pass by reference
         bool used = ImGui::VSliderFloat(label.c_str(), {sizeX, sizeY}, &current_v, v_min, v_max, format,
-                                        static_cast<ImGuiSliderFlags>(flags));
+                                        flags);
         return std::make_tuple(current_v, used);
     }
 
@@ -562,7 +562,7 @@ namespace sol_ImGui {
                                          float v_max, const std::string &format, int flags) {
         float current_v = v; // Pass by reference
         bool used = ImGui::VSliderFloat(label.c_str(), {sizeX, sizeY}, &current_v, v_min, v_max, format.c_str(),
-                                        static_cast<ImGuiSliderFlags>(flags));
+                                        flags);
         return std::make_tuple(current_v, used);
     }
 
@@ -570,7 +570,7 @@ namespace sol_ImGui {
                                      const char *format, int flags) {
         int current_v = v; // Pass by reference
         bool used = ImGui::VSliderInt(label.c_str(), {sizeX, sizeY}, &current_v, v_min, v_max, format,
-                                      static_cast<ImGuiSliderFlags>(flags));
+                                      flags);
         return std::make_tuple(current_v, used);
     }
 
@@ -587,7 +587,7 @@ namespace sol_ImGui {
                                      const std::string &format, int flags) {
         int current_v = v; // Pass by reference
         bool used = ImGui::VSliderInt(label.c_str(), {sizeX, sizeY}, &current_v, v_min, v_max, format.c_str(),
-                                      static_cast<ImGuiSliderFlags>(flags));
+                                      flags);
         return std::make_tuple(current_v, used);
     }
 
@@ -603,7 +603,7 @@ namespace sol_ImGui {
         buffer[std::min(buf_size - 1, current_text.length())] = '\0';
 
         bool changed = ImGui::InputText(label.c_str(), buffer.data(), buf_size,
-                                        static_cast<ImGuiInputTextFlags>(flags));
+                                        flags);
         return std::make_tuple(std::string(buffer.data()), changed);
     }
 
@@ -618,7 +618,7 @@ namespace sol_ImGui {
         buffer[std::min(buf_size - 1, current_text.length())] = '\0';
 
         bool changed = ImGui::InputTextMultiline(label.c_str(), buffer.data(), buf_size, size,
-                                                 static_cast<ImGuiInputTextFlags>(flags));
+                                                 flags);
         return std::make_tuple(std::string(buffer.data()), changed);
     }
 
@@ -644,7 +644,7 @@ namespace sol_ImGui {
         buffer[std::min(buf_size - 1, current_text.length())] = '\0';
 
         bool changed = ImGui::InputTextWithHint(label.c_str(), hint.c_str(), buffer.data(), buf_size,
-                                                static_cast<ImGuiInputTextFlags>(flags));
+                                                flags);
         return std::make_tuple(std::string(buffer.data()), changed);
     }
 
@@ -657,7 +657,7 @@ namespace sol_ImGui {
                                        const char *format, int flags) {
         float current_v = v; // Pass by reference
         bool changed = ImGui::InputFloat(label.c_str(), &current_v, step, step_fast, format,
-                                         static_cast<ImGuiInputTextFlags>(flags));
+                                         flags);
         return std::make_tuple(current_v, changed);
     }
 
@@ -682,7 +682,7 @@ namespace sol_ImGui {
                                        const std::string &format, int flags) {
         float current_v = v; // Pass by reference
         bool changed = ImGui::InputFloat(label.c_str(), &current_v, step, step_fast, format.c_str(),
-                                         static_cast<ImGuiInputTextFlags>(flags));
+                                         flags);
         return std::make_tuple(current_v, changed);
     }
 
@@ -731,7 +731,7 @@ namespace sol_ImGui {
     std::tuple<int, bool> InputInt(const std::string &label, int v, int step, int step_fast, int flags) {
         int current_v = v; // Pass by reference
         bool changed = ImGui::InputInt(label.c_str(), &current_v, step, step_fast,
-                                       static_cast<ImGuiInputTextFlags>(flags));
+                                       flags);
         return std::make_tuple(current_v, changed);
     }
 
@@ -776,7 +776,7 @@ namespace sol_ImGui {
                                          const char *format, int flags) {
         double current_v = v; // Pass by reference
         bool changed = ImGui::InputDouble(label.c_str(), &current_v, step, step_fast, format,
-                                          static_cast<ImGuiInputTextFlags>(flags));
+                                          flags);
         return std::make_tuple(current_v, changed);
     }
 
@@ -801,7 +801,7 @@ namespace sol_ImGui {
                                          const std::string &format, int flags) {
         double current_v = v; // Pass by reference
         bool changed = ImGui::InputDouble(label.c_str(), &current_v, step, step_fast, format.c_str(),
-                                          static_cast<ImGuiInputTextFlags>(flags));
+                                          flags);
         return std::make_tuple(current_v, changed);
     }
 
@@ -822,7 +822,7 @@ namespace sol_ImGui {
                     col[4].get<std::optional<lua_Number> >().value_or(static_cast<lua_Number>(1.0f))
                 }; // Default alpha to 1.0f
         const ImVec4 color_vec{float(r), float(g), float(b), float(a)};
-        return ImGui::ColorButton(desc_id.c_str(), color_vec, static_cast<ImGuiColorEditFlags>(flags), size);
+        return ImGui::ColorButton(desc_id.c_str(), color_vec, flags, size);
     }
 
     bool ColorButton(const std::string &desc_id, const sol::table &col) {
@@ -839,7 +839,7 @@ namespace sol_ImGui {
 
     bool Selectable(const std::string &label, bool selected, int flags, const ImVec2 &size) {
         bool p_selected = selected;
-        bool activated = ImGui::Selectable(label.c_str(), &p_selected, static_cast<ImGuiSelectableFlags>(flags), size);
+        bool activated = ImGui::Selectable(label.c_str(), &p_selected, flags, size);
         // If activated, return new state of p_selected. Otherwise, return original selected state.
         return activated ? p_selected : selected;
     }
@@ -847,15 +847,15 @@ namespace sol_ImGui {
     bool Selectable(const std::string &label) { return ImGui::Selectable(label.c_str()); }
 
     bool Selectable(const std::string &label, bool selected) {
-        return sol_ImGui::Selectable(label, selected, 0, {0, 0});
+        return Selectable(label, selected, 0, {0, 0});
     }
 
     bool Selectable(const std::string &label, bool selected, int flags) {
-        return sol_ImGui::Selectable(label, selected, flags, {0, 0});
+        return Selectable(label, selected, flags, {0, 0});
     }
 
     bool Selectable(const std::string &label, bool selected, int flags, float sizeX, float sizeY) {
-        return sol_ImGui::Selectable(label, selected, flags, {sizeX, sizeY});
+        return Selectable(label, selected, flags, {sizeX, sizeY});
     }
 
     std::tuple<int, bool> ListBox(const std::string &label, int current_item, const sol::table &items, int items_count,
@@ -955,18 +955,18 @@ namespace sol_ImGui {
         ImGui::SetNextFrameWantCaptureKeyboard(want_capture_keyboard_value);
     }
 
-    bool IsMouseDown(int button) { return ImGui::IsMouseDown(static_cast<ImGuiMouseButton>(button)); }
+    bool IsMouseDown(int button) { return ImGui::IsMouseDown(button); }
 
-    bool IsMouseClicked(int button) { return ImGui::IsMouseClicked(static_cast<ImGuiMouseButton>(button)); }
+    bool IsMouseClicked(int button) { return ImGui::IsMouseClicked(button); }
 
     bool IsMouseClicked(int button, bool repeat) {
-        return ImGui::IsMouseClicked(static_cast<ImGuiMouseButton>(button), repeat);
+        return ImGui::IsMouseClicked(button, repeat);
     }
 
-    bool IsMouseReleased(int button) { return ImGui::IsMouseReleased(static_cast<ImGuiMouseButton>(button)); }
+    bool IsMouseReleased(int button) { return ImGui::IsMouseReleased(button); }
 
     bool IsMouseDoubleClicked(int button) {
-        return ImGui::IsMouseDoubleClicked(static_cast<ImGuiMouseButton>(button));
+        return ImGui::IsMouseDoubleClicked(button);
     }
 
     bool IsMouseHoveringRect(float min_x, float min_y, float max_x, float max_y) {
@@ -996,10 +996,10 @@ namespace sol_ImGui {
         return std::make_tuple(vec2.x, vec2.y);
     }
 
-    bool IsMouseDragging(int button) { return ImGui::IsMouseDragging(static_cast<ImGuiMouseButton>(button)); }
+    bool IsMouseDragging(int button) { return ImGui::IsMouseDragging(button); }
 
     bool IsMouseDragging(int button, float lock_threshold) {
-        return ImGui::IsMouseDragging(static_cast<ImGuiMouseButton>(button), lock_threshold);
+        return ImGui::IsMouseDragging(button, lock_threshold);
     }
 
     std::tuple<float, float> GetMouseDragDelta() {
@@ -1008,22 +1008,22 @@ namespace sol_ImGui {
     }
 
     std::tuple<float, float> GetMouseDragDelta(int button) {
-        const auto vec2{ImGui::GetMouseDragDelta(static_cast<ImGuiMouseButton>(button))};
+        const auto vec2{ImGui::GetMouseDragDelta(button)};
         return std::make_tuple(vec2.x, vec2.y);
     }
 
     std::tuple<float, float> GetMouseDragDelta(int button, float lock_threshold) {
-        const auto vec2{ImGui::GetMouseDragDelta(static_cast<ImGuiMouseButton>(button), lock_threshold)};
+        const auto vec2{ImGui::GetMouseDragDelta(button, lock_threshold)};
         return std::make_tuple(vec2.x, vec2.y);
     }
 
     void ResetMouseDragDelta() { ImGui::ResetMouseDragDelta(); }
 
-    void ResetMouseDragDelta(int button) { ImGui::ResetMouseDragDelta(static_cast<ImGuiMouseButton>(button)); }
+    void ResetMouseDragDelta(int button) { ImGui::ResetMouseDragDelta(button); }
 
     int GetMouseCursor() { return ImGui::GetMouseCursor(); }
 
-    void SetMouseCursor(int cursor_type) { ImGui::SetMouseCursor(static_cast<ImGuiMouseCursor>(cursor_type)); }
+    void SetMouseCursor(int cursor_type) { ImGui::SetMouseCursor(cursor_type); }
 
     void CaptureMouseFromApp() { ImGui::SetNextFrameWantCaptureMouse(true); }
 

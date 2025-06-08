@@ -46,7 +46,7 @@ namespace sol_ImGui {
     }
 
     bool BeginCombo(const std::string &label, const std::string &previewValue, int flags) {
-        return ImGui::BeginCombo(label.c_str(), previewValue.c_str(), static_cast<ImGuiComboFlags>(flags));
+        return ImGui::BeginCombo(label.c_str(), previewValue.c_str(), flags);
     }
 
     void EndCombo() { ImGui::EndCombo(); }
@@ -108,9 +108,9 @@ namespace sol_ImGui {
                 g{col[2].get<std::optional<lua_Number> >().value_or(static_cast<lua_Number>(0))},
                 b{col[3].get<std::optional<lua_Number> >().value_or(static_cast<lua_Number>(0))};
         float color_arr[3] = {float(r), float(g), float(b)}; // Renamed to avoid conflict
-        bool used = ImGui::ColorEdit3(label.c_str(), color_arr, static_cast<ImGuiColorEditFlags>(flags));
+        bool used = ImGui::ColorEdit3(label.c_str(), color_arr, flags);
 
-        sol::as_table_t rgb = sol::as_table(std::vector<float>{color_arr[0], color_arr[1], color_arr[2]});
+        sol::as_table_t rgb = sol::as_table(std::vector{color_arr[0], color_arr[1], color_arr[2]});
         return std::make_tuple(rgb, used);
     }
 
@@ -128,9 +128,9 @@ namespace sol_ImGui {
                     col[4].get<std::optional<lua_Number> >().value_or(static_cast<lua_Number>(1.0f))
                 }; // Default alpha to 1.0f
         float color_arr[4] = {float(r), float(g), float(b), float(a)}; // Renamed
-        bool used = ImGui::ColorEdit4(label.c_str(), color_arr, static_cast<ImGuiColorEditFlags>(flags));
+        bool used = ImGui::ColorEdit4(label.c_str(), color_arr, flags);
 
-        sol::as_table_t rgba = sol::as_table(std::vector<float>{
+        sol::as_table_t rgba = sol::as_table(std::vector{
             color_arr[0], color_arr[1], color_arr[2], color_arr[3]
         });
         return std::make_tuple(rgba, used);
@@ -147,9 +147,9 @@ namespace sol_ImGui {
                 g{col[2].get<std::optional<lua_Number> >().value_or(static_cast<lua_Number>(0))},
                 b{col[3].get<std::optional<lua_Number> >().value_or(static_cast<lua_Number>(0))};
         float color_arr[3] = {float(r), float(g), float(b)}; // Renamed
-        bool used = ImGui::ColorPicker3(label.c_str(), color_arr, static_cast<ImGuiColorEditFlags>(flags));
+        bool used = ImGui::ColorPicker3(label.c_str(), color_arr, flags);
 
-        sol::as_table_t rgb = sol::as_table(std::vector<float>{color_arr[0], color_arr[1], color_arr[2]});
+        sol::as_table_t rgb = sol::as_table(std::vector{color_arr[0], color_arr[1], color_arr[2]});
         return std::make_tuple(rgb, used);
     }
 
@@ -169,9 +169,9 @@ namespace sol_ImGui {
                 }; // Default alpha to 1.0f
         float color_arr[4] = {float(r), float(g), float(b), float(a)}; // Renamed
         // Note: ref_col is not easily passed from Lua. Keeping it NULL.
-        bool used = ImGui::ColorPicker4(label.c_str(), color_arr, static_cast<ImGuiColorEditFlags>(flags), ref_col);
+        bool used = ImGui::ColorPicker4(label.c_str(), color_arr, flags, ref_col);
 
-        sol::as_table_t rgba = sol::as_table(std::vector<float>{
+        sol::as_table_t rgba = sol::as_table(std::vector{
             color_arr[0], color_arr[1], color_arr[2], color_arr[3]
         });
         return std::make_tuple(rgba, used);
@@ -187,7 +187,7 @@ namespace sol_ImGui {
         return ColorPicker4(label, col, flags, NULL);
     }
 
-    void SetColorEditOptions(int flags) { ImGui::SetColorEditOptions(static_cast<ImGuiColorEditFlags>(flags)); }
+    void SetColorEditOptions(int flags) { ImGui::SetColorEditOptions(flags); }
 
     bool TreeNode(const std::string &label) { return ImGui::TreeNode(label.c_str()); }
 
@@ -198,11 +198,11 @@ namespace sol_ImGui {
     bool TreeNodeEx(const std::string &label) { return ImGui::TreeNodeEx(label.c_str()); }
 
     bool TreeNodeEx(const std::string &label, int flags) {
-        return ImGui::TreeNodeEx(label.c_str(), static_cast<ImGuiTreeNodeFlags>(flags));
+        return ImGui::TreeNodeEx(label.c_str(), flags);
     }
 
     bool TreeNodeEx(const std::string &str_id, int flags, const std::string &fmt_or_label) {
-        return ImGui::TreeNodeEx(str_id.c_str(), static_cast<ImGuiTreeNodeFlags>(flags), "%s", fmt_or_label.c_str());
+        return ImGui::TreeNodeEx(str_id.c_str(), flags, "%s", fmt_or_label.c_str());
     }
 
     void TreePush(const std::string &str_id) { ImGui::TreePush(str_id.c_str()); }
@@ -214,13 +214,13 @@ namespace sol_ImGui {
     bool CollapsingHeader(const std::string &label) { return ImGui::CollapsingHeader(label.c_str()); }
 
     bool CollapsingHeader(const std::string &label, int flags) {
-        return ImGui::CollapsingHeader(label.c_str(), static_cast<ImGuiTreeNodeFlags>(flags));
+        return ImGui::CollapsingHeader(label.c_str(), flags);
     }
 
     std::tuple<bool, bool> CollapsingHeader(const std::string &label, bool open, int flags) {
         bool p_open_value = open;
         bool notCollapsed = ImGui::CollapsingHeader(label.c_str(), &p_open_value,
-                                                    static_cast<ImGuiTreeNodeFlags>(flags));
+                                                    flags);
         return std::make_tuple(p_open_value, notCollapsed);
     }
 
@@ -231,7 +231,7 @@ namespace sol_ImGui {
     void SetNextItemOpen(bool is_open) { ImGui::SetNextItemOpen(is_open); }
 
     void SetNextItemOpen(bool is_open, int cond) {
-        ImGui::SetNextItemOpen(is_open, static_cast<ImGuiCond>(cond));
+        ImGui::SetNextItemOpen(is_open, cond);
     }
 
     void Value(const std::string &prefix, bool b) { ImGui::Value(prefix.c_str(), b); }

@@ -15,17 +15,17 @@ namespace sol_ImGui {
     void PushStyleColor(int idx, int col) { ImGui::PushStyleColor(static_cast<ImGuiCol>(idx), ImU32(col)); }
 #endif
     void PushStyleColor(int idx, float colR, float colG, float colB, float colA) {
-        ImGui::PushStyleColor(static_cast<ImGuiCol>(idx), {colR, colG, colB, colA});
+        ImGui::PushStyleColor(idx, {colR, colG, colB, colA});
     }
 
     void PopStyleColor() { ImGui::PopStyleColor(); }
 
     void PopStyleColor(int count) { ImGui::PopStyleColor(count); }
 
-    void PushStyleVar(int idx, float val) { ImGui::PushStyleVar(static_cast<ImGuiStyleVar>(idx), val); }
+    void PushStyleVar(int idx, float val) { ImGui::PushStyleVar(idx, val); }
 
     void PushStyleVar(int idx, float valX, float valY) {
-        ImGui::PushStyleVar(static_cast<ImGuiStyleVar>(idx), {valX, valY});
+        ImGui::PushStyleVar(idx, {valX, valY});
     }
 
     void PopStyleVar() { ImGui::PopStyleVar(); }
@@ -33,7 +33,7 @@ namespace sol_ImGui {
     void PopStyleVar(int count) { ImGui::PopStyleVar(count); }
 
     std::tuple<float, float, float, float> GetStyleColorVec4(int idx) {
-        const auto col{ImGui::GetStyleColorVec4(static_cast<ImGuiCol>(idx))};
+        const auto col{ImGui::GetStyleColorVec4(idx)};
         return std::make_tuple(col.x, col.y, col.z, col.w);
     }
 
@@ -142,7 +142,7 @@ namespace sol_ImGui {
     bool BeginTabBar(const std::string &str_id) { return ImGui::BeginTabBar(str_id.c_str()); }
 
     bool BeginTabBar(const std::string &str_id, int flags) {
-        return ImGui::BeginTabBar(str_id.c_str(), static_cast<ImGuiTabBarFlags>(flags));
+        return ImGui::BeginTabBar(str_id.c_str(), flags);
     }
 
     void EndTabBar() { ImGui::EndTabBar(); }
@@ -154,12 +154,12 @@ namespace sol_ImGui {
 
     bool BeginTabItem(const std::string &label, int flags) {
         // No p_open, with flags
-        return ImGui::BeginTabItem(label.c_str(), NULL, static_cast<ImGuiTabItemFlags>(flags));
+        return ImGui::BeginTabItem(label.c_str(), NULL, flags);
     }
 
     std::tuple<bool, bool> BeginTabItem(const std::string &label, bool open_val, int flags) {
         bool p_open = open_val;
-        bool selected = ImGui::BeginTabItem(label.c_str(), &p_open, static_cast<ImGuiTabItemFlags>(flags));
+        bool selected = ImGui::BeginTabItem(label.c_str(), &p_open, flags);
         return std::make_tuple(p_open, selected);
     }
 
@@ -235,7 +235,7 @@ namespace sol_ImGui {
 
     bool IsItemHovered() { return ImGui::IsItemHovered(); }
 
-    bool IsItemHovered(int flags) { return ImGui::IsItemHovered(static_cast<ImGuiHoveredFlags>(flags)); }
+    bool IsItemHovered(int flags) { return ImGui::IsItemHovered(flags); }
 
     bool IsItemActive() { return ImGui::IsItemActive(); }
 
@@ -244,7 +244,7 @@ namespace sol_ImGui {
     bool IsItemClicked() { return ImGui::IsItemClicked(); }
 
     bool IsItemClicked(int mouse_button) {
-        return ImGui::IsItemClicked(static_cast<ImGuiMouseButton>(mouse_button));
+        return ImGui::IsItemClicked(mouse_button);
     }
 
     bool IsItemVisible() { return ImGui::IsItemVisible(); }

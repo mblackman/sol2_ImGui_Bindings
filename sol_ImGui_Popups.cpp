@@ -14,21 +14,21 @@ namespace sol_ImGui {
     bool BeginPopup(const std::string &str_id) { return ImGui::BeginPopup(str_id.c_str()); }
 
     bool BeginPopup(const std::string &str_id, int flags) {
-        return ImGui::BeginPopup(str_id.c_str(), static_cast<ImGuiWindowFlags>(flags));
+        return ImGui::BeginPopup(str_id.c_str(), flags);
     }
 
     bool BeginPopupModal(const std::string &name) {
-        return ImGui::BeginPopupModal(name.c_str(), NULL, 0);
+        return ImGui::BeginPopupModal(name.c_str(), nullptr, 0);
     }
 
     bool BeginPopupModal(const std::string &name, int flags) {
         // Overload with flags, no p_open
-        return ImGui::BeginPopupModal(name.c_str(), NULL, static_cast<ImGuiWindowFlags>(flags));
+        return ImGui::BeginPopupModal(name.c_str(), nullptr, flags);
     }
 
     std::tuple<bool, bool> BeginPopupModal(const std::string &name, bool open_val, int flags) {
         bool p_open = open_val;
-        bool displayed = ImGui::BeginPopupModal(name.c_str(), &p_open, static_cast<ImGuiWindowFlags>(flags));
+        bool displayed = ImGui::BeginPopupModal(name.c_str(), &p_open, flags);
         return std::make_tuple(p_open, displayed);
     }
 
@@ -41,17 +41,17 @@ namespace sol_ImGui {
     void OpenPopup(const std::string &str_id) { ImGui::OpenPopup(str_id.c_str()); }
 
     void OpenPopup(const std::string &str_id, int popup_flags) {
-        ImGui::OpenPopup(str_id.c_str(), static_cast<ImGuiPopupFlags>(popup_flags));
+        ImGui::OpenPopup(str_id.c_str(), popup_flags);
     }
 
     void OpenPopupOnItemClick(const std::string &str_id, int popup_flags) {
-        ImGui::OpenPopupOnItemClick(str_id.empty() ? NULL : str_id.c_str(), static_cast<ImGuiPopupFlags>(popup_flags));
+        ImGui::OpenPopupOnItemClick(str_id.empty() ? nullptr : str_id.c_str(), popup_flags);
     }
 
-    void OpenPopupOnItemClick() { ImGui::OpenPopupOnItemClick(NULL, 1); }
+    void OpenPopupOnItemClick() { ImGui::OpenPopupOnItemClick(nullptr, 1); }
 
     bool BeginPopupContextItem() {
-        return ImGui::BeginPopupContextItem(NULL, ImGuiPopupFlags_MouseButtonRight);
+        return ImGui::BeginPopupContextItem(nullptr, ImGuiPopupFlags_MouseButtonRight);
     }
 
     bool BeginPopupContextItem(const std::string &str_id) {
@@ -59,11 +59,11 @@ namespace sol_ImGui {
     }
 
     bool BeginPopupContextItem(const std::string &str_id, int popup_flags) {
-        return ImGui::BeginPopupContextItem(str_id.c_str(), static_cast<ImGuiPopupFlags>(popup_flags));
+        return ImGui::BeginPopupContextItem(str_id.c_str(), popup_flags);
     }
 
     bool BeginPopupContextWindow() {
-        return ImGui::BeginPopupContextWindow(NULL, ImGuiPopupFlags_MouseButtonRight);
+        return ImGui::BeginPopupContextWindow(nullptr, ImGuiPopupFlags_MouseButtonRight);
     }
 
     bool BeginPopupContextWindow(const std::string &str_id) {
@@ -71,11 +71,11 @@ namespace sol_ImGui {
     }
 
     bool BeginPopupContextWindow(const std::string &str_id, int popup_flags) {
-        return ImGui::BeginPopupContextWindow(str_id.c_str(), static_cast<ImGuiPopupFlags>(popup_flags));
+        return ImGui::BeginPopupContextWindow(str_id.c_str(), popup_flags);
     }
 
     bool BeginPopupContextVoid() {
-        return ImGui::BeginPopupContextVoid(NULL, ImGuiPopupFlags_MouseButtonRight);
+        return ImGui::BeginPopupContextVoid(nullptr, ImGuiPopupFlags_MouseButtonRight);
     }
 
     bool BeginPopupContextVoid(const std::string &str_id) {
@@ -83,7 +83,7 @@ namespace sol_ImGui {
     }
 
     bool BeginPopupContextVoid(const std::string &str_id, int popup_flags) {
-        return ImGui::BeginPopupContextVoid(str_id.c_str(), static_cast<ImGuiPopupFlags>(popup_flags));
+        return ImGui::BeginPopupContextVoid(str_id.c_str(), popup_flags);
     }
 
     void CloseCurrentPopup() { ImGui::CloseCurrentPopup(); }
@@ -91,7 +91,7 @@ namespace sol_ImGui {
     bool IsPopupOpen(const std::string &str_id) { return ImGui::IsPopupOpen(str_id.c_str()); }
 
     bool IsPopupOpen(const std::string &str_id, int popup_flags) {
-        return ImGui::IsPopupOpen(str_id.c_str(), static_cast<ImGuiPopupFlags>(popup_flags));
+        return ImGui::IsPopupOpen(str_id.c_str(), popup_flags);
     }
 
 #pragma region Init
