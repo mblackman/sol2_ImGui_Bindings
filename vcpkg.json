@@ -1,5 +1,5 @@
 {
-  "name": "sol2_ImGui_Bindings",
+  "name": "sol2-imgui-bindings",
   "version-string": "1.91.8",
   "dependencies": [
     {
