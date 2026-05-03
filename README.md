@@ -4,29 +4,36 @@ Welcome to the sol2 ImGui bindings.
 I spent my time making these over the last few days.
 I hope you think they are useful as there are no others to my knowledge.
 
-Enjoy! 
+Enjoy!
 
 # DEPRECATED
-Hi, just an additional note that this specific branch is deprecated and does not run with the current version. Some people have forked this and updated it, please check those as I can't maintain this.
+
+Hi, just an additional note that this specific branch is deprecated and does not run with the current version. Some
+people have forked this and updated it, please check those as I can't maintain this.
 https://github.com/MSeys/sol2_ImGui_Bindings/network/members
 
 # Notes
+
 - This uses the latest sol2 version (as of July 2020), the repo is located at https://github.com/ThePhD/sol2/.
 - These bindings are based on one of the latest versions of ImGui Docking Branch. Comment what you don't need or breaks.
 - I've hidden the U32 related function with a definition (SOL_IMGUI_USE_COLOR_U32), if you wish to use these, define
   that!
-- There's also another define hidden (CUSTOM_IMGUI) which is for my own adapted imgui version with a few more enum values, ignore if you wish.
+- There's also another definition hidden (CUSTOM_IMGUI) which is for my own adapted imgui version with a few more enum
+  values, ignore if you wish.
 
 # How to Use
+
 ```cpp
   // Call this function!
   sol_ImGui::Init(lua); // lua being your sol::state
 ```
 
 # Documentation
+
 You can find all the supported functions and overloads below.
 
 ## Windows
+
 ```lua
   -- ImGui.Begin(...)
   -- Parameters: text (name), bool (open) [O], ImGuiWindowFlags (flags) [O]
@@ -42,6 +49,7 @@ You can find all the supported functions and overloads below.
 ```
 
 ## Child Windows
+
 ```lua
   -- ImGui.BeginChild(...)
   -- Parameters: text (name), float (size_x) [O], float (size_y) [O], ImGuiWindowFlags (flags) [O]
@@ -58,6 +66,7 @@ You can find all the supported functions and overloads below.
 ```
 
 ## Windows Utilities
+
 ```lua
   -- ImGui.IsWindowAppearing()
   -- Returns: bool (appearing)
@@ -184,6 +193,7 @@ You can find all the supported functions and overloads below.
 ```
 
 ## Content Region
+
 ```lua
   -- ImGui.GetContentRegionMax()
   -- Returns: float (x), float (y)
@@ -207,6 +217,7 @@ You can find all the supported functions and overloads below.
 ```
 
 ## Windows Scrolling
+
 ```lua
   -- ImGui.GetScrollX()
   -- Returns: float (x)
@@ -258,7 +269,10 @@ You can find all the supported functions and overloads below.
 ```
 
 ## Parameters Stacks (Shared)
-Note: This binding does not give functions that can obtain an ImFont* from inside Lua (besides GetFont), You'll need to add your own.
+
+Note: This binding does not give functions that can obtain an ImFont* from inside Lua (besides GetFont), You'll need to
+add your own.
+
 ```lua
   -- ImGui.PushFont(...)
   -- Parameters: ImFont* (font)
@@ -308,6 +322,7 @@ Note: This binding does not give functions that can obtain an ImFont* from insid
 ```
 
 ## Parameter Stacks (Current Window)
+
 ```lua
   -- ImGui.PushItemWidth(...)
   -- Parameters: float (width)
@@ -349,6 +364,7 @@ Note: This binding does not give functions that can obtain an ImFont* from insid
 ```
 
 ## Cursor / Layout
+
 ```lua
   -- ImGui.Separator()
   ImGui.Separator
@@ -443,6 +459,7 @@ Note: This binding does not give functions that can obtain an ImFont* from insid
 ```
 
 ## ID Stack / Scopes
+
 ```lua
   -- ImGui.PushID(...)
   -- Parameters A: text (str_id)
@@ -466,6 +483,7 @@ Note: This binding does not give functions that can obtain an ImFont* from insid
 ```
 
 ## Widgets: Text
+
 ```lua
   -- ImGui.TextUnformatted(...)
   -- Parameters: text (text), text (text_end) [O]
@@ -499,6 +517,7 @@ Note: This binding does not give functions that can obtain an ImFont* from insid
 ```
 
 ## Widgets: Main
+
 ```lua
   -- ImGui.Button(...)
   -- Parameters: text (label), float (size_x) [O], float (size_y) [O]
@@ -548,6 +567,7 @@ Note: This binding does not give functions that can obtain an ImFont* from insid
 ```
 
 ## Widgets: Combo Box
+
 ```lua
   -- ImGui.BeginCombo(...)
   -- Parameters: text (label), text (previewValue), ImGuiComboFlags (flags) [O]
@@ -571,6 +591,7 @@ Note: This binding does not give functions that can obtain an ImFont* from insid
 ```
 
 ## Widgets: Drags
+
 ```lua
   -- ImGui.DragFloat(...)
   -- Parameters: text (label), float (value), float (value_speed) [O], float (value_min) [O], float (value_max) [O], text (format) [O], float (power) [O]
@@ -658,6 +679,7 @@ Note: This binding does not give functions that can obtain an ImFont* from insid
 ```
 
 ## Widgets: Sliders
+
 ```lua
   -- ImGui.SliderFloat(...)
   -- Parameters: text (label), float (value), float (value_min), float (value_max), text (format) [O], float (power) [O]
@@ -745,6 +767,7 @@ Note: This binding does not give functions that can obtain an ImFont* from insid
 ```
 
 ## Widgets: Input with Keyboard
+
 ```lua
   -- ImGui.InputText(...)
   -- Parameters: text (label), text (text), int (buf_size), ImGuiInputTextFlags (flags) [O]
@@ -844,6 +867,7 @@ Note: This binding does not give functions that can obtain an ImFont* from insid
 ```
 
 ## Widgets: Color Editor / Picker
+
 ```lua
   -- ImGui.ColorEdit3(...)
   -- Parameters: text (label), table (col), ImGuiColorEditFlags (flags) [O] 
@@ -887,6 +911,7 @@ Note: This binding does not give functions that can obtain an ImFont* from insid
 ```
 
 ## Widgets: Trees
+
 ```lua
   -- ImGui.TreeNode(...)
   -- Parameters: text (label), text (fmt) [O]
@@ -933,6 +958,7 @@ Note: This binding does not give functions that can obtain an ImFont* from insid
 ```
 
 ## Widgets: Selectables
+
 ```lua
   -- ImGui.Selectable(...)
   -- Parameters: text (label), bool (selected) [O], ImGuiSelectableFlags (flags) [O], float (size_x) [O], float (size_y) [O]
@@ -945,6 +971,7 @@ Note: This binding does not give functions that can obtain an ImFont* from insid
 ```
 
 ## Widgets: List Boxes
+
 ```lua
   -- ImGui.ListBox(...)
   -- Parameters: text (label), int (current_item), table (items), int (items_count), int (height_in_items) [O]
@@ -967,6 +994,7 @@ Note: This binding does not give functions that can obtain an ImFont* from insid
 ```
 
 ## Widgets: Value() Helpers
+
 ```lua
   -- ImGui.Value(...)
   -- Parameters: text (prefix) bool/int/unsigned int/float (value), text (float_format) [O] -- format only available with float
@@ -979,6 +1007,7 @@ Note: This binding does not give functions that can obtain an ImFont* from insid
 ```
 
 ## Widgets: Menus
+
 ```lua
 -- ImGui.BeginMenuBar()
 -- Returns: bool (shouldDraw)
@@ -1017,6 +1046,7 @@ selected, activated = ImGui.MenuItem("Label", "ALT+F4", selected, true)
 ```
 
 ## Tooltips
+
 ```lua
   -- ImGui.BeginTooltip()
   ImGui.BeginTooltip()
@@ -1030,6 +1060,7 @@ selected, activated = ImGui.MenuItem("Label", "ALT+F4", selected, true)
 ```
 
 ## Popups, Modals
+
 ```lua
   -- ImGui.BeginPopup(...)
   -- Parameters: text (str_id), ImGuiWindowFlags (flags) [O]
@@ -1098,6 +1129,7 @@ selected, activated = ImGui.MenuItem("Label", "ALT+F4", selected, true)
 ```
 
 ## Columns
+
 ```lua
   -- ImGui.Columns(...)
   -- Parameters: int (count) [O], text (id) [O], bool (border) [O]
@@ -1142,6 +1174,7 @@ selected, activated = ImGui.MenuItem("Label", "ALT+F4", selected, true)
 ```
 
 ## Tab Bars, Tabs
+
 ```lua
   -- ImGui.BeginTabBar(...)
   -- Parameters: text (str_id), ImGuiTabBarFlags (flags)
@@ -1172,6 +1205,7 @@ selected, activated = ImGui.MenuItem("Label", "ALT+F4", selected, true)
 ```
 
 ## Docking
+
 ```lua
   -- ImGui.DockSpace(...)
   -- Parameters: unsigned int (id), float (size_x) [O], float (size_y) [O], ImGuiDockNodeFlags (flags) [O]
@@ -1196,6 +1230,7 @@ selected, activated = ImGui.MenuItem("Label", "ALT+F4", selected, true)
 ```
 
 ## Logging
+
 ```lua
   -- ImGui.LogToTTY(...)
   -- Parameters: int (auto_open_depth) [O]
@@ -1228,6 +1263,7 @@ selected, activated = ImGui.MenuItem("Label", "ALT+F4", selected, true)
 ```
 
 ## Clipping
+
 ```lua
   -- ImGui.PushClipRect(...)
   -- Parameters: float (min_x), float (min_y), float (max_x), float (max_y), bool (intersect_current)
@@ -1238,6 +1274,7 @@ selected, activated = ImGui.MenuItem("Label", "ALT+F4", selected, true)
 ```
 
 ## Focus, Activation
+
 ```lua
   -- ImGui.SetItemDefaultFocus()
   ImGui.SetItemDefaultFocus()
@@ -1250,6 +1287,7 @@ selected, activated = ImGui.MenuItem("Label", "ALT+F4", selected, true)
 ```
 
 ## Item / Widgets Utilities
+
 ```lua
   -- ImGui.IsItemHovered(...)
   -- Parameters: ImGuiHoveredFlags (flags) [O]
@@ -1326,6 +1364,7 @@ selected, activated = ImGui.MenuItem("Label", "ALT+F4", selected, true)
 ```
 
 ## Miscellaneous Utilities
+
 ```lua
   -- ImGui.IsRectVisible(...)
   -- Parameters A: float (size_x), float (size_y)
@@ -1360,6 +1399,7 @@ selected, activated = ImGui.MenuItem("Label", "ALT+F4", selected, true)
 ```
 
 ## Text Utilities
+
 ```lua
   -- ImGui.CalcTextSize(...)
   -- Parameters: text (text), text (text_end) [O], bool (hide_text_after_double_hash) [O], float (wrap_width) [O]
@@ -1372,6 +1412,7 @@ selected, activated = ImGui.MenuItem("Label", "ALT+F4", selected, true)
 ```
 
 ## Color Utilities
+
 ```lua
   -- ImGui.ColorConvertRGBtoHSV(...)
   -- Parameters: float (r), float (g), float (b)
@@ -1383,7 +1424,9 @@ selected, activated = ImGui.MenuItem("Label", "ALT+F4", selected, true)
   -- Returns: float (r), float (g), float (b)
   r, g, b = ImGui.ColorConvertHSVtoRGB(1, 0, 0.5)
 ```
+
 ## Inputs Utilities: Keyboard
+
 ```lua
   -- ImGui.GetKeyIndex(...)
   -- Parameters: ImGuiKey (key)
@@ -1420,6 +1463,7 @@ selected, activated = ImGui.MenuItem("Label", "ALT+F4", selected, true)
 ```
 
 ## Inputs Utilities: Mouse
+
 ```lua
   -- ImGui.IsMouseDown(...)
   -- Parameters: ImGuiMouseButton (button)
@@ -1498,6 +1542,7 @@ selected, activated = ImGui.MenuItem("Label", "ALT+F4", selected, true)
 ```
 
 ## Clipboard Utilities
+
 ```lua
   -- ImGui.GetClipboardText()
   -- Returns: text (text)
