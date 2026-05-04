@@ -36,10 +36,7 @@ void InitChildFlags(sol::state &lua) {
                "AlwaysUseWindowPadding", ImGuiChildFlags_AlwaysUseWindowPadding, "ResizeX", ImGuiChildFlags_ResizeX,
                "ResizeY", ImGuiChildFlags_ResizeY, "AutoResizeX", ImGuiChildFlags_AutoResizeX, "AutoResizeY",
                ImGuiChildFlags_AutoResizeY, "AlwaysAutoResize", ImGuiChildFlags_AlwaysAutoResize, "FrameStyle",
-               ImGuiChildFlags_FrameStyle, "NavFlattened", ImGuiChildFlags_NavFlattened,
-               // Obsolete alias
-               "Border", ImGuiChildFlags_Border  // Legacy name
-  );
+               ImGuiChildFlags_FrameStyle, "NavFlattened", ImGuiChildFlags_NavFlattened);
 }
 
 void InitItemFlags(sol::state &lua) {
@@ -52,11 +49,10 @@ void InitItemFlags(sol::state &lua) {
 void InitPopupFlags(sol::state &lua) {
   lua.new_enum("ImGuiPopupFlags", "None", ImGuiPopupFlags_None, "MouseButtonLeft", ImGuiPopupFlags_MouseButtonLeft,
                "MouseButtonRight", ImGuiPopupFlags_MouseButtonRight, "MouseButtonMiddle",
-               ImGuiPopupFlags_MouseButtonMiddle, "MouseButtonMask_", ImGuiPopupFlags_MouseButtonMask_,
-               "MouseButtonDefault_", ImGuiPopupFlags_MouseButtonDefault_, "NoReopen", ImGuiPopupFlags_NoReopen,
-               "NoOpenOverExistingPopup", ImGuiPopupFlags_NoOpenOverExistingPopup, "NoOpenOverItems",
-               ImGuiPopupFlags_NoOpenOverItems, "AnyPopupId", ImGuiPopupFlags_AnyPopupId, "AnyPopupLevel",
-               ImGuiPopupFlags_AnyPopupLevel, "AnyPopup", ImGuiPopupFlags_AnyPopup);
+               ImGuiPopupFlags_MouseButtonMiddle, "MouseButtonMask_", ImGuiPopupFlags_MouseButtonMask_, "NoReopen",
+               ImGuiPopupFlags_NoReopen, "NoOpenOverExistingPopup", ImGuiPopupFlags_NoOpenOverExistingPopup,
+               "NoOpenOverItems", ImGuiPopupFlags_NoOpenOverItems, "AnyPopupId", ImGuiPopupFlags_AnyPopupId,
+               "AnyPopupLevel", ImGuiPopupFlags_AnyPopupLevel, "AnyPopup", ImGuiPopupFlags_AnyPopup);
 }
 
 void InitInputTextFlags(sol::state &lua) {
