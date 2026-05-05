@@ -34,14 +34,15 @@ target_include_directories(sol2_ImGui_Bindings
 )
 
 # --- Dependency Management ---
-if (NOT TARGET vcpkg::imgui)
+if (NOT TARGET imgui::imgui)
     find_package(imgui CONFIG REQUIRED)
 endif ()
 
-if (NOT TARGET vcpkg::sol2)
+if (NOT TARGET sol2::sol2)
     find_package(sol2 CONFIG REQUIRED)
 endif ()
 
 target_link_libraries(sol2_ImGui_Bindings PUBLIC
         imgui::imgui
+        sol2::sol2
 )
