@@ -1,0 +1,77 @@
+name: CI
+
+on:
+  push:        # all branches, so feature branches get CI before a PR exists
+  pull_request:
+  workflow_dispatch:
+
+# Cancel superseded runs for the same branch/PR.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # Fast, host-only gate: the committed generated/ must match what generate.py
+  # produces from the committed metadata. No ImGui/vcpkg needed here.
+  drift:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install codegen deps
+        run: pip install -r codegen/requirements.txt
+      - name: Generated sources are in sync with metadata
+        run: python codegen/generate.py --check
+
+  build:
+    needs: drift
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { os: ubuntu-latest,  cc: gcc,   cxx: g++ }
+          - { os: ubuntu-latest,  cc: clang, cxx: clang++ }
+          # Windows/MSVC leg: built WITHOUT /bigobj, so it also guards the
+          # generated-TU bin-packing against the COFF section-count limit.
+          - { os: windows-latest }
+    runs-on: ${{ matrix.os }}
+    env:
+      VCPKG_ROOT: ${{ github.workspace }}/vcpkg
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Linux build tools
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y ninja-build
+
+      - name: Bootstrap vcpkg
+        shell: bash
+        run: |
+          git clone https://github.com/microsoft/vcpkg "$VCPKG_ROOT"
+          if [ "$RUNNER_OS" = "Windows" ]; then "$VCPKG_ROOT"/bootstrap-vcpkg.bat
+          else "$VCPKG_ROOT"/bootstrap-vcpkg.sh; fi
+
+      - name: Cache vcpkg binaries
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/vcpkg/archives
+          key: vcpkg-${{ matrix.os }}-${{ hashFiles('vcpkg.json') }}
+
+      - name: Configure
+        shell: bash
+        env:
+          CC: ${{ matrix.cc }}
+          CXX: ${{ matrix.cxx }}
+        run: >
+          cmake -B build -S .
+          -DCMAKE_TOOLCHAIN_FILE="$VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake"
+          -DSOL2_IMGUI_BINDINGS_BUILD_TESTS=ON
+          -DCMAKE_BUILD_TYPE=Release
+
+      - name: Build
+        run: cmake --build build --config Release
+
+      - name: Test (headless callability smoke)
+        run: ctest --test-dir build --build-config Release --output-on-failure

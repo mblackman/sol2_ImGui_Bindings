@@ -1,0 +1,16 @@
+# Per-symbol generator overrides.
+#
+# [skip]   functions = [...]   -> not bound at all (truly unwanted).
+# [manual] functions = [...]   -> bound by hand in manual/sol_ImGui_Manual.cpp,
+#                                 which self-registers via InitManual(table).
+#
+# Functions the generator already cannot express (overloads, output bool*,
+# array in/out, text buffers, opaque pointers, varargs) are reported in
+# generated/denylist_report.txt automatically -- they do not need to be listed
+# here unless a hand-written replacement exists in manual/.
+
+[skip]
+functions = []
+
+[manual]
+functions = []

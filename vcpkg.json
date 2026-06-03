@@ -1,0 +1,29 @@
+{
+  "name": "sol2-imgui-bindings",
+  "version": "1.92.7",
+  "description": "sol2 Lua bindings for Dear ImGui, generated from ImGui metadata.",
+  "dependencies": [
+    {
+      "name": "imgui",
+      "features": [
+        "docking-experimental"
+      ],
+      "version>=": "1.91.8"
+    },
+    {
+      "name": "sol2",
+      "version>=": "3.5.0"
+    },
+    {
+      "name": "lua",
+      "version>=": "5.4.7"
+    }
+  ],
+  "builtin-baseline": "cf9b6f1a47898a888f9e86e346a9adfa68357380",
+  "overrides": [
+    {
+      "name": "lua",
+      "version": "5.4.7"
+    }
+  ]
+}

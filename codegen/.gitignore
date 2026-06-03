@@ -1,0 +1,3 @@
+# Local generator working directories (recreated by fetch_metadata.sh).
+.dear_bindings/
+.venv/

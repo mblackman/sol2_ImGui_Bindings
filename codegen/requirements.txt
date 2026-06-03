@@ -1,0 +1,3 @@
+# Python dependencies for the binding generator (codegen/generate.py) and for
+# running dear_bindings (codegen/fetch_metadata.sh). Pinned for reproducibility.
+ply==3.11
