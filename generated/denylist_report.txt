@@ -1,0 +1,139 @@
+// GENERATED FILE -- DO NOT EDIT BY HAND.
+// Produced by codegen/generate.py from codegen/metadata/dcimgui.json.
+// Regenerate with the `regen-bindings` CMake target; see CONTRIBUTING.md.
+
+# 250 functions generated, 133 left to manual/denylist.
+
+AcceptDragDropPayload: pointer return (const ImGuiPayload*)
+Begin: optional output pointer (p_open style)
+BeginChild: overloaded (2 signatures) -> manual
+BeginMultiSelect: pointer return (ImGuiMultiSelectIO*)
+BeginPopupModal: optional output pointer (p_open style)
+BeginTabItem: optional output pointer (p_open style)
+BulletText: varargs
+BulletTextV: user type (va_list)
+CheckboxFlags: overloaded (2 signatures) -> manual
+CollapsingHeader: overloaded (2 signatures) -> manual
+ColorEdit3: array argument (float[3])
+ColorEdit4: array argument (float[4])
+ColorPicker3: array argument (float[3])
+ColorPicker4: array argument (float[4])
+Combo: overloaded (3 signatures) -> manual
+CreateContext: pointer argument (ImFontAtlas*)
+DebugLog: varargs
+DebugLogV: user type (va_list)
+DestroyContext: pointer argument (ImGuiContext*)
+DockSpace: pointer argument (const ImGuiWindowClass*)
+DockSpaceOverViewport: pointer argument (const ImGuiViewport*)
+DragFloat2: array argument (float[2])
+DragFloat3: array argument (float[3])
+DragFloat4: array argument (float[4])
+DragInt2: array argument (int[2])
+DragInt3: array argument (int[3])
+DragInt4: array argument (int[4])
+DragScalar: pointer argument (void*)
+DragScalarN: pointer argument (void*)
+EndMultiSelect: pointer return (ImGuiMultiSelectIO*)
+FindViewportByID: pointer return (ImGuiViewport*)
+FindViewportByPlatformHandle: pointer argument (void*)
+GetAllocatorFunctions: pointer argument (ImGuiMemAllocFunc*)
+GetBackgroundDrawList: pointer argument (ImGuiViewport*)
+GetColorU32: overloaded (3 signatures) -> manual
+GetCurrentContext: pointer return (ImGuiContext*)
+GetDragDropPayload: pointer return (const ImGuiPayload*)
+GetDrawData: pointer return (ImDrawData*)
+GetDrawListSharedData: pointer return (ImDrawListSharedData*)
+GetFont: pointer return (ImFont*)
+GetFontBaked: pointer return (ImFontBaked*)
+GetForegroundDrawList: pointer argument (ImGuiViewport*)
+GetID: overloaded (4 signatures) -> manual
+GetIO: pointer return (ImGuiIO*)
+GetMainViewport: pointer return (ImGuiViewport*)
+GetPlatformIO: pointer return (ImGuiPlatformIO*)
+GetStateStorage: pointer return (ImGuiStorage*)
+GetStyle: pointer return (ImGuiStyle*)
+GetStyleColorVec4: pointer return (const ImVec4*)
+GetWindowDrawList: pointer return (ImDrawList*)
+GetWindowViewport: pointer return (ImGuiViewport*)
+Image: overloaded (2 signatures) -> manual
+ImageButton: opaque user type (ImTextureRef)
+ImageWithBg: opaque user type (ImTextureRef)
+InputFloat2: array argument (float[2])
+InputFloat3: array argument (float[3])
+InputFloat4: array argument (float[4])
+InputInt2: array argument (int[2])
+InputInt3: array argument (int[3])
+InputInt4: array argument (int[4])
+InputScalar: pointer argument (void*)
+InputScalarN: pointer argument (void*)
+InputText: mutable char* buffer (text input)
+InputTextMultiline: mutable char* buffer (text input)
+InputTextWithHint: mutable char* buffer (text input)
+IsMousePosValid: pointer argument (const ImVec2*)
+IsRectVisible: overloaded (2 signatures) -> manual
+LabelText: varargs
+LabelTextV: user type (va_list)
+ListBox: overloaded (2 signatures) -> manual
+LogText: varargs
+LogTextV: user type (va_list)
+MemAlloc: pointer return (void*)
+MemFree: pointer argument (void*)
+MenuItem: overloaded (2 signatures) -> manual
+OpenPopup: overloaded (2 signatures) -> manual
+PlotHistogram: overloaded (2 signatures) -> manual
+PlotLines: overloaded (2 signatures) -> manual
+PushFont: overloaded (2 signatures) -> manual
+PushID: overloaded (4 signatures) -> manual
+PushStyleColor: overloaded (2 signatures) -> manual
+PushStyleVar: overloaded (2 signatures) -> manual
+RadioButton: overloaded (2 signatures) -> manual
+RenderPlatformWindowsDefault: pointer argument (void*)
+SaveIniSettingsToMemory: pointer argument (size_t*)
+Selectable: overloaded (2 signatures) -> manual
+SetAllocatorFunctions: opaque user type (ImGuiMemAllocFunc)
+SetCurrentContext: pointer argument (ImGuiContext*)
+SetDragDropPayload: pointer argument (const void*)
+SetItemTooltip: varargs
+SetItemTooltipV: user type (va_list)
+SetNextItemSelectionUserData: opaque user type (ImGuiSelectionUserData)
+SetNextWindowClass: pointer argument (const ImGuiWindowClass*)
+SetNextWindowSizeConstraints: opaque user type (ImGuiSizeCallback)
+SetStateStorage: pointer argument (ImGuiStorage*)
+SetTooltip: varargs
+SetTooltipV: user type (va_list)
+SetWindowCollapsed: overloaded (2 signatures) -> manual
+SetWindowFocus: overloaded (2 signatures) -> manual
+SetWindowPos: overloaded (2 signatures) -> manual
+SetWindowSize: overloaded (2 signatures) -> manual
+ShowAboutWindow: optional output pointer (p_open style)
+ShowDebugLogWindow: optional output pointer (p_open style)
+ShowDemoWindow: optional output pointer (p_open style)
+ShowIDStackToolWindow: optional output pointer (p_open style)
+ShowMetricsWindow: optional output pointer (p_open style)
+ShowStyleEditor: pointer argument (ImGuiStyle*)
+SliderFloat2: array argument (float[2])
+SliderFloat3: array argument (float[3])
+SliderFloat4: array argument (float[4])
+SliderInt2: array argument (int[2])
+SliderInt3: array argument (int[3])
+SliderInt4: array argument (int[4])
+SliderScalar: pointer argument (void*)
+SliderScalarN: pointer argument (void*)
+StyleColorsClassic: pointer argument (ImGuiStyle*)
+StyleColorsDark: pointer argument (ImGuiStyle*)
+StyleColorsLight: pointer argument (ImGuiStyle*)
+TableGetSortSpecs: pointer return (ImGuiTableSortSpecs*)
+Text: varargs
+TextColored: varargs
+TextColoredV: user type (va_list)
+TextDisabled: varargs
+TextDisabledV: user type (va_list)
+TextV: user type (va_list)
+TextWrapped: varargs
+TextWrappedV: user type (va_list)
+TreeNode: overloaded (3 signatures) -> manual
+TreeNodeEx: overloaded (3 signatures) -> manual
+TreeNodeExV: overloaded (2 signatures) -> manual
+TreeNodeV: overloaded (2 signatures) -> manual
+TreePush: overloaded (2 signatures) -> manual
+VSliderScalar: pointer argument (void*)
