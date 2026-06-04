@@ -1,0 +1,44 @@
+name: Release
+
+# Maintainer-driven: push a vX.Y.Z-<rev> tag (see CONTRIBUTING.md "Releasing").
+# X.Y.Z must match the project VERSION in CMakeLists.txt (the targeted Dear ImGui
+# version); <rev> is the binding-revision counter. The tagged commit is verified
+# by the full CI matrix before a GitHub Release is published.
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write   # create the GitHub Release
+
+jobs:
+  # Run the exact drift + gcc/clang/MSVC build + smoke matrix on the tagged
+  # commit, so a broken commit can never be published.
+  verify:
+    uses: ./.github/workflows/ci.yml
+
+  publish:
+    needs: verify
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate tag matches project VERSION
+        run: |
+          tag="${GITHUB_REF_NAME#v}"          # e.g. 1.92.7-1
+          base="${tag%-*}"                    # 1.92.7
+          rev="${tag##*-}"                    # 1
+          proj=$(grep -Po 'VERSION\s+\K[0-9]+\.[0-9]+\.[0-9]+' CMakeLists.txt | head -1)
+          if [ "$base" != "$proj" ]; then
+            echo "::error::tag base '$base' != CMakeLists.txt VERSION '$proj'"
+            exit 1
+          fi
+          if ! echo "$rev" | grep -Eq '^[0-9]+$'; then
+            echo "::error::expected tag of the form vX.Y.Z-<rev>, got '$GITHUB_REF_NAME'"
+            exit 1
+          fi
+
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "$GITHUB_REF_NAME" --generate-notes --title "$GITHUB_REF_NAME"
