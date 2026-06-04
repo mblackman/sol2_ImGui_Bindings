@@ -39,6 +39,10 @@ jobs:
     runs-on: ${{ matrix.os }}
     env:
       VCPKG_ROOT: ${{ github.workspace }}/vcpkg
+      # Pin the binary cache to a fixed, cross-platform path. vcpkg's default
+      # differs per OS (~/.cache/vcpkg on *nix, %LOCALAPPDATA% on Windows), so a
+      # hard-coded ~/.cache path silently never cached on the Windows leg.
+      VCPKG_DEFAULT_BINARY_CACHE: ${{ github.workspace }}/vcpkg-bincache
     steps:
       - uses: actions/checkout@v4
 
@@ -49,6 +53,7 @@ jobs:
       - name: Bootstrap vcpkg
         shell: bash
         run: |
+          mkdir -p "$VCPKG_DEFAULT_BINARY_CACHE"
           git clone https://github.com/microsoft/vcpkg "$VCPKG_ROOT"
           if [ "$RUNNER_OS" = "Windows" ]; then "$VCPKG_ROOT"/bootstrap-vcpkg.bat
           else "$VCPKG_ROOT"/bootstrap-vcpkg.sh; fi
@@ -56,8 +61,19 @@ jobs:
       - name: Cache vcpkg binaries
         uses: actions/cache@v4
         with:
-          path: ~/.cache/vcpkg/archives
-          key: vcpkg-${{ matrix.os }}-${{ hashFiles('vcpkg.json') }}
+          path: ${{ env.VCPKG_DEFAULT_BINARY_CACHE }}
+          key: vcpkg-bin-${{ matrix.os }}-${{ hashFiles('vcpkg.json') }}
+          restore-keys: vcpkg-bin-${{ matrix.os }}-
+
+      # Cache the source distfiles too (lua/imgui/sol2 tarballs). Keeps a flaky
+      # upstream like www.lua.org from reddening CI: the tarball is fetched at
+      # most once per dependency set, then restored from cache thereafter.
+      - name: Cache vcpkg downloads
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.VCPKG_ROOT }}/downloads
+          key: vcpkg-dl-${{ matrix.os }}-${{ hashFiles('vcpkg.json') }}
+          restore-keys: vcpkg-dl-${{ matrix.os }}-
 
       - name: Configure
         shell: bash
