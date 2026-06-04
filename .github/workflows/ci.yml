@@ -1,9 +1,11 @@
 name: CI
 
 on:
-  push:        # all branches, so feature branches get CI before a PR exists
+  push:
+    branches: ['**']   # every branch gets CI pre-PR; tags are handled by release.yml
   pull_request:
   workflow_dispatch:
+  workflow_call:       # invoked by release.yml to gate a release on green CI
 
 # Cancel superseded runs for the same branch/PR.
 concurrency:

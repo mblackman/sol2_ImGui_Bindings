@@ -51,8 +51,17 @@ and enum, with signatures and ImGui's own descriptions.
 
 **add_subdirectory / FetchContent** (recommended):
 ```cmake
-add_subdirectory(libs/sol2_ImGui_Bindings)        # or FetchContent
+add_subdirectory(libs/sol2_ImGui_Bindings)        # or FetchContent, below
 target_link_libraries(my_app PRIVATE sol2_ImGui_Bindings::sol2_ImGui_Bindings)
+```
+To pin a published release with `FetchContent`, point `GIT_TAG` at a release tag
+(see [Releases](https://github.com/mblackman/sol2_ImGui_Bindings/releases)):
+```cmake
+include(FetchContent)
+FetchContent_Declare(sol2_ImGui_Bindings
+    GIT_REPOSITORY https://github.com/mblackman/sol2_ImGui_Bindings
+    GIT_TAG        v1.92.7-1)                       # ImGui version + binding revision
+FetchContent_MakeAvailable(sol2_ImGui_Bindings)
 ```
 The library finds `imgui::imgui` and `sol2::sol2` itself (via `find_package`) if
 the consumer hasn't already defined them.
@@ -62,6 +71,10 @@ the consumer hasn't already defined them.
 find_package(sol2_ImGui_Bindings CONFIG REQUIRED)
 target_link_libraries(my_app PRIVATE sol2_ImGui_Bindings::sol2_ImGui_Bindings)
 ```
+Release tags are `vX.Y.Z-<rev>`, where `X.Y.Z` is the targeted Dear ImGui version
+and `-<rev>` is a binding revision (binding-only fixes bump `<rev>` without an
+ImGui change). The `-<rev>` lives only in the git tag; CMake `find_package`
+version comparisons see just the `X.Y.Z` project version.
 
 Dependencies: Dear ImGui (built with the `docking-experimental` feature for the
 docking bindings) and sol2. `vcpkg.json` pins versions known to work.

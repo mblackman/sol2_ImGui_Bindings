@@ -81,6 +81,29 @@ functions are documented automatically.
 7. In the engine: bump the submodule pointer, run `LuaApiSmokeTest`, run the
    example `game.lua`.
 
+## Releasing
+
+Releases are cut by pushing a git tag; `.github/workflows/release.yml` then runs
+the full CI matrix on the tagged commit and, if it passes, publishes a GitHub
+Release with auto-generated notes.
+
+Tags are `vX.Y.Z-<rev>`:
+- `X.Y.Z` **must equal** the `VERSION` in `CMakeLists.txt` — the targeted Dear
+  ImGui version. (The release workflow fails the publish if they disagree.)
+- `<rev>` is a binding-revision counter. Bump it for binding-only changes (new
+  manual wrappers, bug fixes, doc/codegen tweaks) that ship against the same
+  ImGui version. Reset it to `1` whenever `X.Y.Z` changes.
+
+So the first release for ImGui 1.92.7 is `v1.92.7-1`, a later binding-only fix is
+`v1.92.7-2`, and the first release after bumping to ImGui 1.93.0 is `v1.93.0-1`.
+
+To cut a release from `main` (after the version bump, if any, is merged):
+```sh
+git tag v1.92.7-1
+git push origin v1.92.7-1
+```
+Then advance the engine's submodule pointer to the new tag.
+
 ## CI
 
 `.github/workflows/ci.yml` runs: a host-only **drift gate** (committed
